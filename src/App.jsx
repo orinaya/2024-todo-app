@@ -1,27 +1,8 @@
 import './App.css'
-// import Clock from './components/Clock'
 import TodoList from './components/TodoList'
 import { useEffect, useState } from 'react'
-import { addTodo, getTodos } from './services/Api'
+import { addTodo, getTodos, deleteTodo, updateTodo } from './services/Api'
 import AddTodo from './components/AddTodo'
-
-// const todos = [
-//   {
-//     title: 'Prout 1',
-//     description: 'lorem prout'
-//   },
-//   {
-//     title: 'Prout 2',
-//     description: 'lorem prout'
-//   },
-//   {
-//     title: 'Prout 3',
-//     description: 'lorem prout'
-//   },
-//   {
-//     title: 'Prout 4',
-//     description: 'lorem prout'
-//   }]
 
 function App () {
   const [todos, setTodos] = useState([])
@@ -35,14 +16,31 @@ function App () {
   }, [])
 
   const handleAddTodo = async (todo) => {
-    await addTodo(todo)
+    const todosData = await addTodo(todo)
+    setTodos(todosData)
   }
 
+  const handleUpdateTodo = async (todo) => {
+    const todosData = await updateTodo(todo)
+    setTodos(todosData)
+    console.log(todo)
+  }
+
+  const handleDeleteTodo = async (todoId) => {
+    const todosData = await deleteTodo(todoId)
+    setTodos(todosData)
+    console.log(todoId)
+  }
   return (
     <>
-      <TodoList todos={todos} />
-      <AddTodo onAddTodo={handleAddTodo} />
-      {/* <Clock interval={10} /> */}
+      <TodoList
+        todos={todos}
+        onDeleteTodo={handleDeleteTodo}
+        onUpdateTodo={handleUpdateTodo}
+      />
+      <AddTodo
+        onAddTodo={handleAddTodo}
+      />
     </>
   )
 }

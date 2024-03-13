@@ -1,12 +1,12 @@
 import { Button, Input, Select, SelectItem, Switch, Textarea } from '@nextui-org/react'
 import { useState } from 'react'
 
-function TodoForm ({ onSubmit }) {
+function TodoForm ({ onSubmit, todoId, todoToEdit, onClose }) {
   const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    status: 'TODO',
-    important: true
+    title: todoToEdit?.title || '',
+    description: todoToEdit?.description || '',
+    status: todoToEdit?.status[0] || 'TODO',
+    important: todoToEdit?.important || true
   })
 
   const handleChange = (event) => {
@@ -14,11 +14,13 @@ function TodoForm ({ onSubmit }) {
       ...formData,
       [event.target.name]: event.target.value
     })
+    console.log(formData.title[todoToEdit._id])
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    if (onSubmit) onSubmit(formData)
+    if (onSubmit) onSubmit(formData, todoToEdit?._id)
+    onClose()
   }
 
   return (
@@ -74,7 +76,7 @@ function TodoForm ({ onSubmit }) {
       </Switch>
 
       <Button type='submit'>
-        Envoyer
+        {todoToEdit ? 'Modifier' : 'Ajouter'}
       </Button>
     </form>
 

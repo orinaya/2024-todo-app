@@ -2,7 +2,6 @@ import { Button, useDisclosure } from '@nextui-org/react'
 import { FaPlus } from 'react-icons/fa'
 import AddTodoModal from './AddTodoModal'
 
-
 function AddTodo ({ onAddTodo }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
 
@@ -15,12 +14,14 @@ function AddTodo ({ onAddTodo }) {
         variant='shadow'
         isIconOnly
         onClick={onOpen}
+        onAddTodo={onAddTodo}
       >
         <FaPlus color='white' size={20} />
       </Button>
-
       <AddTodoModal
-        isOpen={isOpen} onOpen={onOpen} onOpenChange={onOpenChange}
+        isOpen={isOpen}
+        onOpen={onOpen}
+        onOpenChange={onOpenChange}
         onAddTodo={onAddTodo}
       />
     </>
