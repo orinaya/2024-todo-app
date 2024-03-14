@@ -2,17 +2,18 @@ import { Button, Card, CardHeader, Image } from '@nextui-org/react'
 
 import { RiDeleteBin5Line } from 'react-icons/ri'
 import { FaPencilAlt } from 'react-icons/fa'
+import { useTodos } from '../hooks/todosHooks'
 
-function Todo ({ openEditModal, onDeleteTodo, todo }) {
+function Todo ({ openEditModal, todo }) {
   const { title, description, _id } = todo
+  const { deleteTodo } = useTodos()
   return (
     <>
 
       <Card
         isHoverable
-        isPressable
         shadow='none'
-        className='flex'
+        className='flex w-full'
       >
         <CardHeader className='flex gap-3'>
           <Image
@@ -38,7 +39,7 @@ function Todo ({ openEditModal, onDeleteTodo, todo }) {
               color='danger'
               isIconOnly
               variant='light'
-              onPress={() => onDeleteTodo(_id)}
+              onPress={() => deleteTodo(_id)}
             >
               <RiDeleteBin5Line color='danger' />
             </Button>

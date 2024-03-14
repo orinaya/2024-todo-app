@@ -1,17 +1,19 @@
 import { Modal, ModalBody, ModalContent, ModalHeader } from '@nextui-org/react'
 import TodoForm from './TodoForm'
+import { useTodos } from '../hooks/todosHooks'
 
-function AddTodoModal ({ todoToEdit, isOpen, onOpen, onOpenChange, onAddTodo, onUpdateTodo }) {
+function AddTodoModal ({ todoToEdit, isOpen, onOpen, onOpenChange }) {
+  const { addTodo, updateTodo } = useTodos()
   const handleSubmit = (formData, id = null) => {
     if (id) {
       // modification
-      onUpdateTodo({
+      updateTodo({
         ...formData,
         _id: id
       })
     } else {
       // ajout
-      onAddTodo(formData)
+      addTodo(formData)
     }
   }
   return (
@@ -20,7 +22,6 @@ function AddTodoModal ({ todoToEdit, isOpen, onOpen, onOpenChange, onAddTodo, on
       onOpenChange={onOpenChange}
       placement='center'
       size='xl'
-      todoToEdit={todoToEdit}
     >
       <ModalContent>
         {(onClose) => (

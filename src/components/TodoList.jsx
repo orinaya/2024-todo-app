@@ -3,7 +3,7 @@ import Todo from './Todo'
 import { useDisclosure } from '@nextui-org/react'
 import AddTodoModal from './AddTodoModal'
 
-function TodoList ({ todos, onAddTodo, onDeleteTodo, onUpdateTodo }) {
+function TodoList ({ todos }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
   const [todoToEdit, settodoToEdit] = useState()
 
@@ -14,7 +14,7 @@ function TodoList ({ todos, onAddTodo, onDeleteTodo, onUpdateTodo }) {
 
   return (
     <>
-      <div className='flex flex-col lg:flex-row gap-4 py-8 px-5'>
+      <div className='flex flex-wrap lg:flex-row gap-4 py-8 px-5'>
         {
 
     todos.map((todo) => {
@@ -23,12 +23,8 @@ function TodoList ({ todos, onAddTodo, onDeleteTodo, onUpdateTodo }) {
           key={todo._id}
           title={todo.title}
           description={todo.description}
-          onDeleteTodo={onDeleteTodo}
-          todoId={todo._id}
           openEditModal={handleOpenEditModal}
           todo={todo}
-          todoToEdit={todoToEdit}
-          onAddTodo={onAddTodo}
         />
       )
     })
@@ -39,9 +35,7 @@ function TodoList ({ todos, onAddTodo, onDeleteTodo, onUpdateTodo }) {
         isOpen={isOpen}
         onOpen={onOpen}
         onOpenChange={onOpenChange}
-        onUpdateTodo={onUpdateTodo}
         todoToEdit={todoToEdit}
-        onAddTodo={onAddTodo}
       />
     </>
   )
