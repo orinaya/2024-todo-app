@@ -8,7 +8,7 @@ function LoginForm () {
     password: ''
   })
 
-  const { login, authData } = useAuth()
+  const { login } = useAuth()
 
   const handleChange = (event) => {
     setformData({
@@ -44,8 +44,6 @@ function LoginForm () {
         value={formData.password}
       />
       <Button type='submit' color='primary'>Se connecter</Button>
-      {/* <Button color='danger' onPress={logout}>Se déconnecter</Button> */}
-      {/* <pre>{JSON.stringify(authData, null, 2)}</pre> */}
     </form>
   )
 }
