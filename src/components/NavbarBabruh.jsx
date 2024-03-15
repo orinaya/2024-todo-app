@@ -2,7 +2,7 @@ import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, Navba
 import { useState } from 'react'
 import { AcmeLogo } from '../components/AcmeLogo'
 import { useAuth } from '../hooks/authHooks'
-
+import logo from '../assets/boachan.jpg'
 function NavbarBabruh () {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -46,7 +46,7 @@ function NavbarBabruh () {
                   color='secondary'
                   name='Ben Linker'
                   size='sm'
-                  src='../../src/assets/boachan.jpg'
+                  src={logo}
                 />
               </DropdownTrigger>
               <DropdownMenu aria-label='Profile Actions' variant='flat'>
