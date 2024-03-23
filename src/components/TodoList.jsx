@@ -6,6 +6,7 @@ import AddTodoModal from './AddTodoModal'
 function TodoList ({ todos }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
   const [todoToEdit, settodoToEdit] = useState()
+  // const [loading, setLoading]= useS
 
   const handleOpenEditModal = (todo) => {
     settodoToEdit(todo)
@@ -21,7 +22,7 @@ function TodoList ({ todos }) {
   }
   return (
     <>
-      <div className='flex flex-wrap lg:flex-row gap-4 py-8 px-5'>
+      <div className='flex flex-wrap lg:flex-row gap-4 py-8'>
         {
 
     todos.map((todo) => {

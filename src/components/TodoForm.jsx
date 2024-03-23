@@ -6,7 +6,8 @@ function TodoForm ({ onSubmit, todoToEdit, onClose }) {
     title: todoToEdit?.title || '',
     description: todoToEdit?.description || '',
     status: todoToEdit?.status[0] || 'TODO',
-    important: todoToEdit?.important || true
+    important: todoToEdit?.important || true,
+    endDate: todoToEdit?.endDate || new Date().toISOString().substring(0, 16)
   })
 
   const handleChange = (event) => {
@@ -74,6 +75,15 @@ function TodoForm ({ onSubmit, todoToEdit, onClose }) {
         Important
       </Switch>
 
+      <Input
+        type='datetime-local'
+        name='date'
+        label='Date de fin'
+        labelPlacement='inside'
+        variant='flat'
+        value={formData.endDate}
+        onChange={handleChange}
+      />
       <Button type='submit'>
         {todoToEdit ? 'Modifier' : 'Ajouter'}
       </Button>

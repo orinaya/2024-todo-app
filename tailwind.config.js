@@ -8,14 +8,18 @@ export default {
     './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        sans: ['"Open Sans"', 'sans-serif']
+      }
+    }
   },
   darkMode: 'class',
   plugins: [nextui({
     themes: {
       light: {
         colors: {
-          background: '#ede4ff',
+          background: '#FCFCFC',
           primary: {
             50: '#f5f0ff',
             100: '#ede4ff',
