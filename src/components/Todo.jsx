@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, CardFooter, CardHeader, Chip, Divider, Image } from '@nextui-org/react'
+import { Button, Card, CardFooter, CardHeader, Chip, Divider, Image } from '@nextui-org/react'
 
 import { RiDeleteBin5Line } from 'react-icons/ri'
 import { FaPencilAlt } from 'react-icons/fa'

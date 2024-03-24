@@ -1,14 +1,16 @@
 import { Button, Input } from '@nextui-org/react'
 import { useState } from 'react'
-import { useAuth } from '../hooks/authHooks'
+import { useAuth } from '../../hooks/authHooks'
 
-function LoginForm () {
+function SignUpForm () {
   const [formData, setformData] = useState({
+    firstName: '',
+    lastName: '',
     email: '',
     password: ''
   })
 
-  const { login } = useAuth()
+  const { createUser } = useAuth()
 
   const handleChange = (event) => {
     setformData({
@@ -20,11 +22,29 @@ function LoginForm () {
   const handleSubmit = (e) => {
     console.log(e)
     e.preventDefault()
-    login(formData)
+    createUser(formData)
   }
 
   return (
     <form className='flex flex-col w-full gap-4' onSubmit={handleSubmit}>
+      <Input
+        name='lastName'
+        label='Nom'
+        type='text'
+        placeholder='Entrez votre nom'
+        variant='flat'
+        onChange={handleChange}
+        value={formData.lastName}
+      />
+      <Input
+        name='firstName'
+        label='Prénom'
+        type='text'
+        placeholder='Entrez votre prénom'
+        variant='flat'
+        onChange={handleChange}
+        value={formData.firstName}
+      />
       <Input
         name='email'
         label='Email'
@@ -43,9 +63,9 @@ function LoginForm () {
         onChange={handleChange}
         value={formData.password}
       />
-      <Button type='submit' color='primary'>Se connecter</Button>
+      <Button type='submit' color='primary'>Valider</Button>
     </form>
   )
 }
 
-export default LoginForm
+export default SignUpForm

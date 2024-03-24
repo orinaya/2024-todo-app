@@ -1,8 +1,9 @@
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button, Dropdown, DropdownTrigger, Avatar, DropdownMenu, DropdownItem } from '@nextui-org/react'
 import { useState } from 'react'
-import { AcmeLogo } from '../components/AcmeLogo'
-import { useAuth } from '../hooks/authHooks'
-import logo from '../assets/boachan.jpg'
+import { useAuth } from '../../hooks/authHooks'
+import profilePicture from '../../assets/boachan.jpg'
+import logo from '../../assets/todoom-logo.svg'
+
 function NavbarBabruh () {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -17,7 +18,7 @@ function NavbarBabruh () {
           className='sm:hidden'
         />
         <NavbarBrand>
-          <AcmeLogo />
+          <img src={logo} />
         </NavbarBrand>
       </NavbarContent>
 
@@ -46,7 +47,7 @@ function NavbarBabruh () {
                   color='secondary'
                   name='Ben Linker'
                   size='sm'
-                  src={logo}
+                  src={profilePicture}
                 />
               </DropdownTrigger>
               <DropdownMenu aria-label='Profile Actions' variant='flat'>

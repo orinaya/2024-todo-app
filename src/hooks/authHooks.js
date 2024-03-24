@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useBetween } from 'use-between'
-import { apiLogin } from '../services/Api'
+import { apiLogin, apiSignUp } from '../services/Api'
 import { toast } from 'react-toastify'
 
 function useAuth () {
@@ -28,6 +28,32 @@ function useAuth () {
     setAuthData(null)
   }, [])
 
+  const createUser = async (user, credentials) => {
+    console.log('signup appelé')
+    try {
+      // setLoading(true)
+      // apiSignUp(user)
+      // const response = await apiLogin(credentials)
+      // setAuthData(response)
+      // if (response && response.token && response._user) {
+      //   toast.success('Compte créé avec succès !')
+
+      setLoading(true)
+      const signUpResponse = await apiSignUp(user)
+      if (signUpResponse && signUpResponse.success) {
+        const loginResponse = await apiLogin(credentials)
+        setAuthData(loginResponse)
+        if (loginResponse && loginResponse.token && loginResponse._user) {
+          toast.success('Compte créé avec succès !')
+        }
+      }
+    } catch (error) {
+      console.error(error)
+      setError(error)
+      setLoading(false)
+    }
+  }
+
   useEffect(() => {
     const savedAuth = window.localStorage.getItem('AUTH')
     if (savedAuth) {
@@ -43,7 +69,7 @@ function useAuth () {
     }
   }, [authData])
 
-  return { authData, loading, error, login, logout }
+  return { authData, loading, error, login, logout, createUser }
 }
 
 const useAuthSharable = () => useBetween(useAuth)
