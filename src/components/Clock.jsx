@@ -27,7 +27,7 @@ function Clock (props) {
 
   // on retourne l'affichage du composant
   return (
-    <h1>{date.toLocaleTimeString()}:{date.getMilliseconds()}</h1>
+    <h1>{date.toLocaleTimeString()}</h1>
   )
 }
 

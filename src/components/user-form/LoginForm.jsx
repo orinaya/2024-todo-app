@@ -43,7 +43,7 @@ function LoginForm () {
         onChange={handleChange}
         value={formData.password}
       />
-      <Button type='submit' color='primary'>Se connecter</Button>
+      <Button type='submit' color='primary' className='text-white font-bold w-fit rounded-lg'>Se connecter</Button>
     </form>
   )
 }

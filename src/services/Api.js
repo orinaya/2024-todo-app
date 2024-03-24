@@ -21,6 +21,11 @@ async function apiGetTodos () {
   return todos.data
 }
 
+async function apiGetTodosArchived () {
+  const todos = await api.get('/archived')
+  return todos.data
+}
+
 async function apiAddTodo (todo) {
   const response = await api.post('/todos', todo)
   return response.data
@@ -52,5 +57,6 @@ export {
   apiUpdateTodo,
   apiDeleteTodo,
   apiLogin,
-  apiSignUp
+  apiSignUp,
+  apiGetTodosArchived
 }

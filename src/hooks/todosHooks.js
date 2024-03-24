@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { apiAddTodo, apiDeleteTodo, apiGetTodos, apiUpdateTodo } from '../services/Api'
+import { apiAddTodo, apiDeleteTodo, apiGetTodos, apiGetTodosArchived, apiUpdateTodo } from '../services/Api'
 import { useBetween } from 'use-between'
 import { useAuth } from './authHooks'
 
@@ -12,6 +12,19 @@ function useTodos () {
     try {
       setLoading(true)
       const todosData = await apiGetTodos()
+      setTodos(todosData)
+      setLoading(false)
+    } catch (error) {
+      console.error(error)
+      setError(error)
+      setLoading(false)
+    }
+  }, [])
+
+  const getDataArchived = useCallback(async () => {
+    try {
+      setLoading(true)
+      const todosData = await apiGetTodosArchived()
       setTodos(todosData)
       setLoading(false)
     } catch (error) {
@@ -68,7 +81,8 @@ function useTodos () {
     getData,
     addTodo,
     updateTodo,
-    deleteTodo
+    deleteTodo,
+    getDataArchived
   }
 }
 

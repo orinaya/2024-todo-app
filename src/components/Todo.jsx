@@ -36,7 +36,7 @@ function Todo ({ openEditModal, todo, importantChip }) {
           <Card
             isHoverable
             shadow='none'
-            className='flex px-4 py-1 w-full bg-yellow-50 hover:bg-yellow-200 rounded-xl'
+            className='flex px-4 py-1 w-full lg:w-96 bg-yellow-50 hover:bg-yellow-200 rounded-xl'
             variant='flat'
           >
             <CardHeader className='flex gap-3'>

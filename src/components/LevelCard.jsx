@@ -20,7 +20,7 @@ function LevelCard ({ progressPercentage, todosDone }) {
         : (
           <Card
             shadow='none'
-            className='container flex px-2 py-1 w-full rounded-xl bg-violet-800'
+            className='container flex px-2 py-1 md:w-32 lg:w-2/5 rounded-xl bg-violet-800'
           >
             <CardHeader className='flex gap-3'>
               <div className='bg-violet-500 px-6 py-6 rounded-full shadow-lg shadow-violet-900'>

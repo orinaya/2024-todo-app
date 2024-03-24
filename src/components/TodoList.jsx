@@ -22,7 +22,7 @@ function TodoList ({ todos }) {
   }
   return (
     <>
-      <div className='flex flex-wrap lg:flex-row gap-4 py-8'>
+      <div className='flex flex-wrap lg:flex-col gap-4 py-8'>
         {
 
     todos.map((todo) => {

@@ -63,7 +63,7 @@ function SignUpForm () {
         onChange={handleChange}
         value={formData.password}
       />
-      <Button type='submit' color='primary'>Valider</Button>
+      <Button type='submit' color='primary' className='text-white font-bold w-fit rounded-lg'>Valider</Button>
     </form>
   )
 }

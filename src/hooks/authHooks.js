@@ -16,6 +16,8 @@ function useAuth () {
       setAuthData(response)
       if (response && response.token && response._user) {
         toast.success('Vous êtes connecté !')
+      } else {
+        toast.error('L\'email ou le mot de passe renseigné est incorrect')
       }
     } catch (error) {
       console.error(error)
@@ -31,22 +33,20 @@ function useAuth () {
   const createUser = async (user, credentials) => {
     console.log('signup appelé')
     try {
-      // setLoading(true)
-      // apiSignUp(user)
-      // const response = await apiLogin(credentials)
-      // setAuthData(response)
-      // if (response && response.token && response._user) {
-      //   toast.success('Compte créé avec succès !')
-
       setLoading(true)
-      const signUpResponse = await apiSignUp(user)
-      if (signUpResponse && signUpResponse.success) {
-        const loginResponse = await apiLogin(credentials)
-        setAuthData(loginResponse)
-        if (loginResponse && loginResponse.token && loginResponse._user) {
-          toast.success('Compte créé avec succès !')
-        }
+      const response = await apiSignUp(user)
+      if (response && response.token && response._user) {
+        toast.success('Vous êtes connecté !')
       }
+      // setLoading(true)
+      // const signUpResponse = await apiSignUp(user)
+      // if (signUpResponse && signUpResponse.success) {
+      //   const loginResponse = await apiLogin(credentials)
+      //   setAuthData(loginResponse)
+      //   if (loginResponse && loginResponse.token && loginResponse._user) {
+      //     toast.success('Vous êtes connecté !')
+      //   }
+      // }
     } catch (error) {
       console.error(error)
       setError(error)

@@ -52,7 +52,7 @@ function NavbarBabruh () {
               </DropdownTrigger>
               <DropdownMenu aria-label='Profile Actions' variant='flat'>
                 <DropdownItem key='profile' className='h-14 gap-2'>
-                  <p className='font-semibold'>Bonjour, {authData._user.email}</p>
+                  <p className='font-semibold'>Bonjour, {authData._user.firstName} {authData._user.lastName}</p>
                 </DropdownItem>
                 <DropdownItem color='danger' onPress={logout}>
                   Log Out
